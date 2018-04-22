@@ -28,8 +28,10 @@ let popupBtn = document.getElementById('popup-btn'),
     slidesClothes = clothesDiv.getElementsByClassName('clothes-style'),
     readyBtn = document.getElementById('ready'),
     mainCards = document.getElementsByClassName('main-cards')[0],
-    candidateDiv = document.getElementsByClassName('main-cards-item')[0].cloneNode(true),
-    progressBar = candidateDiv.querySelector('.progress-bar');
+    // candidateDiv = document.getElementsByClassName('main-cards-item')[0].cloneNode(true),
+    reset = document.getElementById('reset'),
+    voting = document.getElementById('voting'),
+    crime = document.getElementById('crime');
 
 popupBtn.addEventListener('click', function(){
     overlay.style.display = 'none';
@@ -314,15 +316,57 @@ readyBtn.addEventListener('click', function(e){
     let candidatePhoto = document.getElementsByClassName('person')[0].cloneNode(true);
     custom.style.display = 'none';
     main.style.display = 'block';
+    let candidateDiv = document.getElementsByClassName('main-cards-item')[0].cloneNode(true);
+    candidateDiv.id = 'clone';
     candidateDiv.querySelector('.photo').classList.remove('photo-1');
     candidateDiv.querySelector('.photo').appendChild(candidatePhoto);
     candidateDiv.querySelector('.result-count').textContent = '0%';
-    progressBar.classList.remove('progress-bar-1');
-    progressBar.classList.add('progress-bar-3');
+    candidateDiv.querySelector('.progress-bar').classList.remove('progress-bar-1');
+    candidateDiv.querySelector('.progress-bar').classList.add('progress-bar-3');
     candidateDiv.querySelector('.name').textContent = candidateName;
     candidateDiv.querySelector('.age').textContent = `${candidateAge} лет`;
     candidateDiv.querySelector('.sex').textContent = candidateSex;
     candidateDiv.querySelector('.views').textContent = candidateViews;
     candidateDiv.querySelector('.bio').textContent = candidateBio;
     mainCards.appendChild(candidateDiv);
+});
+
+function randomizer(min, max) {
+    var rand = min + Math.random() * (max + 1 - min);
+    rand = Math.floor(rand);
+    return rand;
+};
+
+voting.addEventListener('click', function(){
+    let rand1 = randomizer(1, 98);
+        document.getElementsByClassName('result-count')[2].textContent = `${rand1}%`;
+        document.getElementsByClassName('progress-bar')[2].style.height = `${rand1}%`;
+        
+    let rand2 = randomizer(1, 99-rand1);
+        document.getElementsByClassName('result-count')[1].textContent = `${rand2}%`;
+        document.getElementsByClassName('progress-bar')[1].style.height = `${rand2}%`;
+    let rand3 = 100-rand1-rand2;
+        document.getElementsByClassName('result-count')[0].textContent = `${rand3}%`;
+        document.getElementsByClassName('progress-bar')[0].style.height = `${rand3}%`;
+});
+
+crime.addEventListener('click', function(){
+    let rand1 = randomizer(26, 98);
+        document.getElementsByClassName('result-count')[2].textContent = `${rand1}%`;
+        document.getElementsByClassName('progress-bar')[2].style.height = `${rand1}%`;
+        
+    let rand2 = randomizer(1, 99-rand1);
+        document.getElementsByClassName('result-count')[1].textContent = `${rand2}%`;
+        document.getElementsByClassName('progress-bar')[1].style.height = `${rand2}%`;
+    let rand3 = 100-rand1-rand2;
+        document.getElementsByClassName('result-count')[0].textContent = `${rand3}%`;
+        document.getElementsByClassName('progress-bar')[0].style.height = `${rand3}%`;
+});
+
+reset.addEventListener('click', function(){
+    // candidatePhoto = '';
+    // candidateDiv.querySelector('.photo').remove('.person');
+    document.getElementById('clone').remove();
+    main.style.display = 'none';
+    custom.style.display = 'flex';
 });

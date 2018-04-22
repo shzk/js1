@@ -234,17 +234,6 @@
   -o-transition: 1.5s;
   -moz-transition: 1.5s;
   transition: 1.5s;
-}
-
-.main-cards-item .candidate-block .result .progress-bar-1 {
-  height: 35%;
-}
-
-.main-cards-item .candidate-block .result .progress-bar-2 {
-  height: 65%;
-}
-
-.main-cards-item .candidate-block .result .progress-bar-3 {
   height: 0%;
 }
 
