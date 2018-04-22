@@ -43,7 +43,7 @@ custom.addEventListener('change', function(){
         candidateSex = male.value;
         personSkin.classList.add('person-skin-1');
         for (let i = 0; i < 3; i++) {
-            personSkin.classList.remove(`person-skin-${i+1}`);
+            personSkin.classList.remove(`person-skin-${i+4}`);
             slidesSkin[i].style.display = 'none';
         }
         slidesSkin[0].style.display = 'block';
