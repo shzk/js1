@@ -62,37 +62,29 @@ function skinSlider() {
     function showSlides(n){
         if (n > slides.length) {
             slideIndex = 1;
-            if (male.checked) {
-                personSkin.classList.add(`person-skin-${n}`);
-            } else {
-                personSkin.classList.add(`person-skin-${n+3}`);
-            }
+            console.log(`n > slideIndex = ${slideIndex}`);
         };
         if (n < 1) {
             slideIndex = slides.length;
-            if (male.checked) {
-                personSkin.classList.add(`person-skin-${n}`);
-            } else {
-                personSkin.classList.add(`person-skin-${n+3}`);
-            }
+            console.log(`slideIndex < 1 = ${slideIndex}`);
         };
         for (let i = 0; i < slides.length; i++) {
             slides[i].style.display = 'none';
             if (male.checked) {
-                for (let j = 1; j < 3; j++) {
+                for (let j = 1; j < 4; j++) {
                     personSkin.classList.remove(`person-skin-${j}`);
                 }
             } else {
-                for (let j = 4; j < 6; j++) {
+                for (let j = 4; j < 7; j++) {
                     personSkin.classList.remove(`person-skin-${j}`);
                 }
             }
         };
         slides[slideIndex - 1].style.display = 'block';
         if (male.checked) {
-            personSkin.classList.add(`person-skin-${n}`);
+            personSkin.classList.add(`person-skin-${slideIndex}`);
         } else {
-            personSkin.classList.add(`person-skin-${n+3}`);
+            personSkin.classList.add(`person-skin-${slideIndex+3}`);
         }
     };
 
