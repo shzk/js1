@@ -244,6 +244,10 @@
   height: 65%;
 }
 
+.main-cards-item .candidate-block .result .progress-bar-3 {
+  height: 0%;
+}
+
 .main-cards-item .name {
   font-size: 16px;
   font-weight: 700;
@@ -937,4 +941,147 @@
   background: #aeaeae url("../img/clothes/slide/clothes-6.png") center no-repeat;
   background-size: 20%;
   border-radius: 10px;
+}
+
+.person {
+  width: 230px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.person-skin {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  width: 180px;
+  height: 450px;
+  background-size: cover;
+}
+
+.person-skin-1 {
+  background: url("../img/skin/skin-1.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-skin-2 {
+  background: url("../img/skin/skin-2.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-skin-3 {
+  background: url("../img/skin/skin-3.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-skin-4 {
+  background: url("../img/skin/skin-4.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-skin-5 {
+  background: url("../img/skin/skin-5.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-skin-6 {
+  background: url("../img/skin/skin-6.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-clothes {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  width: 180px;
+  height: 450px;
+}
+
+.person-clothes-1 {
+  background: url("../img/clothes/construct/clothes-1.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-clothes-2 {
+  background: url("../img/clothes/construct/clothes-2.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-clothes-3 {
+  background: url("../img/clothes/construct/clothes-3.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-clothes-4 {
+  background: url("../img/clothes/construct/clothes-4.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-clothes-5 {
+  background: url("../img/clothes/construct/clothes-5.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-clothes-6 {
+  background: url("../img/clothes/construct/clothes-6.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-hair {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  width: 180px;
+  height: 450px;
+}
+
+.person-hair-1 {
+  background: url("../img/hair/construct/hair-1.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-hair-2 {
+  background: url("../img/hair/construct/hair-2.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-hair-3 {
+  background: url("../img/hair/construct/hair-3.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-hair-4 {
+  background: url("../img/hair/construct/hair-4.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-hair-5 {
+  background: url("../img/hair/construct/hair-5.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-hair-6 {
+  background: url("../img/hair/construct/hair-6.png") center no-repeat;
+  background-size: cover;
+}
+
+.person-shoes {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  width: 180px;
+  height: 450px;
+  background: url("../img/clothes/construct/shoes.png") center no-repeat;
+  background-size: cover;
 }

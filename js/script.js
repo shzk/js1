@@ -6,7 +6,7 @@ let popupBtn = document.getElementById('popup-btn'),
     iname = document.getElementById('name'),
     candidateName = '',
     age = document.getElementById('age'),
-    candidateAge = '',
+    candidateAge = 0,
     male = document.getElementById('male'),
     female = document.getElementById('female'),
     candidateSex = '',
@@ -20,25 +20,71 @@ let popupBtn = document.getElementById('popup-btn'),
     candidateClothes = 0,
     personHair = document.getElementById('person-hair'),
     candidateHair = 0,
-    candidateShoes = 0,
     skinDiv = document.getElementsByClassName('skin')[0],
     slidesSkin = skinDiv.getElementsByClassName('skin-color'),
     hairDiv = document.getElementsByClassName('hair')[0],
     slidesHair = hairDiv.getElementsByClassName('hair-style'),
     clothesDiv = document.getElementsByClassName('clothes')[0],
-    slidesClothes = clothesDiv.getElementsByClassName('clothes-style');
+    slidesClothes = clothesDiv.getElementsByClassName('clothes-style'),
+    readyBtn = document.getElementById('ready'),
+    mainCards = document.getElementsByClassName('main-cards')[0],
+    candidateDiv = document.getElementsByClassName('main-cards-item')[0].cloneNode(true),
+    progressBar = candidateDiv.querySelector('.progress-bar');
 
 popupBtn.addEventListener('click', function(){
     overlay.style.display = 'none';
     main.style.display = 'none';
     custom.style.display = 'flex';
 });
+if (!iname.value || iname.value == '') {
+    candidateName = 'Default guy'
+} else {
+    candidateName = iname.value;
+}
+if (age.value == '') {
+    candidateAge = '60';
+} else {
+    candidateAge = age.value;
+}
+if (!male.checked || !female.checked) {
+    candidateSex = 'Default Sex';
+} 
+if (!views.options[views.selectedIndex]) {
+    candidateViews = 'Default Views';
+} else {
+    candidateViews = views.options[views.selectedIndex].value;
+}
+if ( !bio.value) {
+    candidateBio = 'Default Bio';
+} else {
+    candidateBio = bio.value;
+}
 
 custom.addEventListener('change', function(){
-    candidateName = iname.value;
-    candidateAge = age.value;
-    candidateViews = views.options[views.selectedIndex].value;
-    candidateBio = bio.value;
+    if (!iname.value || iname.value == '') {
+        candidateName = 'Default guy'
+    } else {
+        candidateName = iname.value;
+    }
+    
+    if (typeof(age.value) != Number || age.value == '') {
+        candidateAge = 'Default age';
+    } else {
+        candidateAge = age.value;
+    }
+    if (!male.checked || !female.checked) {
+        candidateSex = 'Default Sex';
+    } 
+    if (!views.options[views.selectedIndex]) {
+        candidateViews = 'Default Views';
+    } else {
+        candidateViews = views.options[views.selectedIndex].value;
+    }
+    if ( !bio.value) {
+        candidateBio = 'Default Bio';
+    } else {
+        candidateBio = bio.value;
+    }
     if (male.checked) {
         candidateSex = male.value;
         personSkin.classList.add('person-skin-1');
@@ -114,19 +160,14 @@ function skinSlider() {
         if (male.checked) {
             personSkin.classList.add(`person-skin-${slideSkinIndex}`);
             candidateSkin = `person-skin-${slideSkinIndex}`;
-            // console.log(candidateSkin);
         } else {
             personSkin.classList.add(`person-skin-${slideSkinIndex+3}`);
             candidateSkin = `person-skin-${slideSkinIndex+3}`;
-            // console.log(candidateSkin);
         }
     };
     function plusSlides(n) {
         showSlides(slideSkinIndex += n);
     };
-    // function currentSlide(n) {
-    //     showSlides(slideIndex = n);
-    // }
     prev.addEventListener('click', function(){
         plusSlides(-1);
     });
@@ -267,3 +308,21 @@ function clothesSlider() {
         });
     };
 clothesSlider();
+
+readyBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    let candidatePhoto = document.getElementsByClassName('person')[0].cloneNode(true);
+    custom.style.display = 'none';
+    main.style.display = 'block';
+    candidateDiv.querySelector('.photo').classList.remove('photo-1');
+    candidateDiv.querySelector('.photo').appendChild(candidatePhoto);
+    candidateDiv.querySelector('.result-count').textContent = '0%';
+    progressBar.classList.remove('progress-bar-1');
+    progressBar.classList.add('progress-bar-3');
+    candidateDiv.querySelector('.name').textContent = candidateName;
+    candidateDiv.querySelector('.age').textContent = `${candidateAge} лет`;
+    candidateDiv.querySelector('.sex').textContent = candidateSex;
+    candidateDiv.querySelector('.views').textContent = candidateViews;
+    candidateDiv.querySelector('.bio').textContent = candidateBio;
+    mainCards.appendChild(candidateDiv);
+});
