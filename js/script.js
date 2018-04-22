@@ -16,7 +16,10 @@ let popupBtn = document.getElementById('popup-btn'),
     candidateBio = '',
     personSkin = document.getElementById('person-skin'),
     personClothes = document.getElementById('person-clothes'),
-    personHair = document.getElementById('person-hair');
+    personHair = document.getElementById('person-hair'),
+    skinDiv = document.getElementsByClassName('skin')[0],
+    hairDiv = document.getElementsByClassName('hair')[0],
+    clothesDiv = document.getElementsByClassName('clothes')[0];
 
 popupBtn.addEventListener('click', function(){
     overlay.style.display = 'none';
@@ -47,3 +50,66 @@ custom.addEventListener('change', function(){
         personHair.classList.remove('person-hair-1');
     }
 });
+
+function skinSlider() {
+    let slideIndex = 1,
+        slides = skinDiv.getElementsByClassName('skin-color'),
+        prev = skinDiv.querySelector('.prev'),
+        next = skinDiv.querySelector('.next');
+
+    showSlides(slideIndex);
+
+    function showSlides(n){
+        if (n > slides.length) {
+            slideIndex = 1;
+            if (male.checked) {
+                personSkin.classList.add(`person-skin-${n}`);
+            } else {
+                personSkin.classList.add(`person-skin-${n+3}`);
+            }
+        };
+        if (n < 1) {
+            slideIndex = slides.length;
+            if (male.checked) {
+                personSkin.classList.add(`person-skin-${n}`);
+            } else {
+                personSkin.classList.add(`person-skin-${n+3}`);
+            }
+        };
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+            if (male.checked) {
+                for (let j = 1; j < 3; j++) {
+                    personSkin.classList.remove(`person-skin-${j}`);
+                }
+            } else {
+                for (let j = 4; j < 6; j++) {
+                    personSkin.classList.remove(`person-skin-${j}`);
+                }
+            }
+        };
+        slides[slideIndex - 1].style.display = 'block';
+        if (male.checked) {
+            personSkin.classList.add(`person-skin-${n}`);
+        } else {
+            personSkin.classList.add(`person-skin-${n+3}`);
+        }
+    };
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    };
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    prev.addEventListener('click', function(){
+        plusSlides(-1);
+    });
+    next.addEventListener('click', function(){
+        plusSlides(1);
+    });
+};
+
+skinSlider();
