@@ -69,7 +69,7 @@ custom.addEventListener('change', function(){
         candidateName = iname.value;
     }
     
-    if (typeof(age.value) != Number || age.value == '') {
+    if (age.value == '') {
         candidateAge = 'Default age';
     } else {
         candidateAge = age.value;
