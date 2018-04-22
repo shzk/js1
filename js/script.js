@@ -23,6 +23,7 @@ let popupBtn = document.getElementById('popup-btn'),
     candidateShoes = 0,
     skinDiv = document.getElementsByClassName('skin')[0],
     hairDiv = document.getElementsByClassName('hair')[0],
+    slidesHair = hairDiv.getElementsByClassName('hair-style'),
     clothesDiv = document.getElementsByClassName('clothes')[0];
 
 popupBtn.addEventListener('click', function(){
@@ -42,22 +43,24 @@ custom.addEventListener('change', function(){
         personSkin.classList.remove('person-skin-4');
         personClothes.classList.add('person-clothes-1');
         personClothes.classList.remove('person-clothes-4');
-        // personHair.classList.add('person-hair-1');
-        // for (let i = 3; i < 6; i++) {
-        //     personHair.classList.remove(`person-hair-${i+1}`);
-        //     slidesHair[i].style.display = 'none';
-        // }
+        personHair.classList.add('person-hair-1');
+        slidesHair[0].style.display = 'block';
+        for (let i = 3; i < 6; i++) {
+            personHair.classList.remove(`person-hair-${i+1}`);
+            slidesHair[i].style.display = 'none';
+        }
     } else {
         candidateSex = female.value;
         personSkin.classList.add('person-skin-4');
         personSkin.classList.remove('person-skin-1');
         personClothes.classList.add('person-clothes-4');
         personClothes.classList.remove('person-clothes-1');
-        // personHair.classList.add('person-hair-4');
-        // for (let i = 1; i < 3; i++) {
-        //     personHair.classList.remove(`person-hair-${i+1}`);
-        //     slidesHair[i].style.display = 'none';
-        // }
+        personHair.classList.add('person-hair-4');
+        slidesHair[3].style.display = 'block';
+        for (let i = 0; i < 3; i++) {
+            personHair.classList.remove(`person-hair-${i+1}`);
+            slidesHair[i].style.display = 'none';
+        }
     }
 });
 
@@ -117,7 +120,6 @@ skinSlider();
 
 function hairSlider() {
     let slideHairIndex = 1,
-        slidesHair = hairDiv.getElementsByClassName('hair-style'),
         prevHair = hairDiv.querySelector('.prev'),
         nextHair = hairDiv.querySelector('.next'); 
 
