@@ -42,16 +42,22 @@ custom.addEventListener('change', function(){
         personSkin.classList.remove('person-skin-4');
         personClothes.classList.add('person-clothes-1');
         personClothes.classList.remove('person-clothes-4');
-        personHair.classList.add('person-hair-1');
-        personHair.classList.remove('person-hair-4');
+        // personHair.classList.add('person-hair-1');
+        // for (let i = 3; i < 6; i++) {
+        //     personHair.classList.remove(`person-hair-${i+1}`);
+        //     slidesHair[i].style.display = 'none';
+        // }
     } else {
         candidateSex = female.value;
         personSkin.classList.add('person-skin-4');
         personSkin.classList.remove('person-skin-1');
         personClothes.classList.add('person-clothes-4');
         personClothes.classList.remove('person-clothes-1');
-        personHair.classList.add('person-hair-4');
-        personHair.classList.remove('person-hair-1');
+        // personHair.classList.add('person-hair-4');
+        // for (let i = 1; i < 3; i++) {
+        //     personHair.classList.remove(`person-hair-${i+1}`);
+        //     slidesHair[i].style.display = 'none';
+        // }
     }
 });
 
@@ -97,9 +103,9 @@ function skinSlider() {
     function plusSlides(n) {
         showSlides(slideIndex += n);
     };
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
+    // function currentSlide(n) {
+    //     showSlides(slideIndex = n);
+    // }
     prev.addEventListener('click', function(){
         plusSlides(-1);
     });
@@ -113,52 +119,61 @@ function hairSlider() {
     let slideHairIndex = 1,
         slidesHair = hairDiv.getElementsByClassName('hair-style'),
         prevHair = hairDiv.querySelector('.prev'),
-        nextHair = hairDiv.querySelector('.next');
+        nextHair = hairDiv.querySelector('.next'); 
 
     showHairSlides(slideHairIndex);
 
     function showHairSlides(n){
+
         if (male.checked) {
-            if (n > slidesHair.length-3) {
-            slideHairIndex = 1;
+            for (let k = 3; k < slidesHair.length; k++) {
+                slidesHair[k].style.display = 'none';
+                personHair.classList.remove(`person-hair-${k+1}`);
             }
+            if (n > slidesHair.length-3) {
+                slideHairIndex = 1;
+                console.log(`n > slideHairIndex = ${slideHairIndex}`);
+            };
             if (n < 1) {
                 slideHairIndex = slidesHair.length-3;
-            }
+            };
             for (let i = 0; i < slidesHair.length-3; i++) {
                 slidesHair[i].style.display = 'none';
                 for (let j = 1; j < 4; j++) {
-                    personHair.classList.remove(`hair-style-${j}`);
+                    personHair.classList.remove(`person-hair-${j}`);
                 }
-            }
-            slidesHair[slideHairIndex-1].style.display = 'block';
+            };
+            slidesHair[slideHairIndex - 1].style.display = 'block';
             personHair.classList.add(`person-hair-${slideHairIndex}`);
             candidateHair = `person-hair-${slideHairIndex}`;
         } else {
+            for (let k = 0; k < slidesHair.length-3; k++) {
+                slidesHair[k].style.display = 'none';
+                personHair.classList.remove(`person-hair-${k+1}`);
+            }
             if (n > slidesHair.length) {
-            slideHairIndex = 4;
-            }
-            if (n < 1) {
+                slideHairIndex = 4;
+                console.log(`n > slideHairIndex = ${slideHairIndex}`);
+            };
+            if (n < 4) {
                 slideHairIndex = slidesHair.length;
-            }
+            };
             for (let i = 3; i < slidesHair.length; i++) {
                 slidesHair[i].style.display = 'none';
                 for (let j = 4; j < 7; j++) {
-                    personHair.classList.remove(`hair-style-${j}`);
+                    personHair.classList.remove(`person-hair-${j}`);
                 }
-            }
-            slidesHair[slideHairIndex-4].style.display = 'block';
-            personHair.classList.add(`person-hair-${slideHairIndex+3}`);
-            candidateHair = `person-hair-${slideHairIndex+3}`;
+            };
+            slidesHair[slideHairIndex - 1].style.display = 'block';
+            personHair.classList.add(`person-hair-${slideHairIndex}`);
+            candidateHair = `person-hair-${slideHairIndex}`;
         }
+    };
 
         function plusHairSlides(n) {
             showHairSlides(slideHairIndex += n);
         };
 
-        function currentHairSlide(n) {
-            showHairSlides(slideHairIndex = n);
-        }
         prevHair.addEventListener('click', function(){
             plusHairSlides(-1);
         });
@@ -166,6 +181,4 @@ function hairSlider() {
             plusHairSlides(1);
         });
     };
-    
-};
 hairSlider();
