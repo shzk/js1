@@ -364,8 +364,13 @@ crime.addEventListener('click', function(){
 });
 
 reset.addEventListener('click', function(){
-    // candidatePhoto = '';
-    // candidateDiv.querySelector('.photo').remove('.person');
+    for (let i = 0; i < 3; i++) {
+        document.getElementsByClassName('result-count')[i].textContent = `0 %`;
+        document.getElementsByClassName('progress-bar')[i].style.height = `0%`;
+    }
+    for (let j = 0; j < inputs.length; j++) {
+        inputs[j].value= '';
+    }
     document.getElementById('clone').remove();
     main.style.display = 'none';
     custom.style.display = 'flex';
